@@ -73,7 +73,10 @@ enum Signal {
     }
 
     static func consume(_ m: Msg) {
-        Task { _ = try? await WebDav.cfg().map { try await WebDav.request($0, "DELETE", "miyu/signal/\(m.file)") } }
+        Task {
+            guard let cfg = WebDav.cfg() else { return }
+            _ = try? await WebDav.request(cfg, "DELETE", "miyu/signal/\(m.file)")
+        }
     }
 
     static func vibrate() {

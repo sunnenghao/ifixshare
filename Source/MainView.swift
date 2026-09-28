@@ -1,4 +1,5 @@
 import SwiftUI
+import AVFoundation
 
 struct MainView: View {
     @StateObject private var store = Store.shared

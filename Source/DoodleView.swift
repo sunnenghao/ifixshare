@@ -101,8 +101,8 @@ struct DoodleView: View {
             ctx.fill(CGRect(origin: .zero, size: size))
             let scale = min(720 / max(UIScreen.main.bounds.width - 32, 1), 900 / 900)
             for s in strokes {
-                s.color.setFill()
-                s.color.setStroke()
+                UIColor(s.color).setFill()
+                UIColor(s.color).setStroke()
                 let pts = s.points.map { CGPoint(x: $0.x * scale, y: $0.y * scale) }
                 guard pts.count > 1 else {
                     if let p = pts.first { ctx.cgContext.fillEllipse(in: CGRect(x: p.x - 5, y: p.y - 5, width: 10, height: 10)) }
